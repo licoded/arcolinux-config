@@ -1,0 +1,2 @@
+# arcolinux-config
+ArcoLinux Configurations
