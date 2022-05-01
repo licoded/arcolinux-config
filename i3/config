@@ -396,6 +396,7 @@ exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpap
 
 exec --no-startup-id flameshot &
 exec --no-startup-id qv2ray &
+exec --no-startup-id fcitx-autostart &
 
 ################# system applications       
 
