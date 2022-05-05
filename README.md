@@ -1,0 +1,2 @@
+# arcolinuxB-awesome
+ArcoLinux Configurations
