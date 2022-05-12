@@ -113,10 +113,10 @@ unsetopt SHARE_HISTORY
 
 export HISTCONTROL=ignoreboth:erasedups
 
-# Make nano the default editor
+# Make nvim the default editor
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 #PS1='[\u@\h \W]\$ '
 
@@ -292,7 +292,7 @@ alias rg="rg --sort path"
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-#nano for important configuration files
+#nvim for important configuration files
 #know what you do in these files
 alias nlxdm="sudo $EDITOR /etc/lxdm/lxdm.conf"
 alias nlightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
@@ -301,13 +301,13 @@ alias ngrub="sudo $EDITOR /etc/default/grub"
 alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
 alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
 alias nmirrorlist="sudo $EDITOR /etc/pacman.d/mirrorlist"
-alias narcomirrorlist='sudo nano /etc/pacman.d/arcolinux-mirrorlist'
+alias narcomirrorlist='sudo nvim /etc/pacman.d/arcolinux-mirrorlist'
 alias nsddm="sudo $EDITOR /etc/sddm.conf"
 alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
 alias nfstab="sudo $EDITOR /etc/fstab"
 alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
 alias nsamba="sudo $EDITOR /etc/samba/smb.conf"
-alias ngnupgconf="sudo nano /etc/pacman.d/gnupg/gpg.conf"
+alias ngnupgconf="sudo nvim /etc/pacman.d/gnupg/gpg.conf"
 alias nhosts="sudo $EDITOR /etc/hosts"
 alias nb="$EDITOR ~/.bashrc"
 alias nz="$EDITOR ~/.zshrc"
@@ -449,6 +449,13 @@ alias gitee="git config user.name Licoded;git config user.email apple_mac00@163.
 
 # java terminal use English instead of Chinese
 export JAVA_TOOL_OPTIONS=-Duser.language=en
+#set oracle jdk environment
+export JAVA_HOME=/opt/jdk/jdk1.8.0_171
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+# proxy
 alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890"
 
 # set default server
@@ -464,3 +471,15 @@ export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
 export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
 export PATH=/home/lic/.local/bin:$PATH
+
+# python3 virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source $HOME/.local/bin/virtualenvwrapper.sh
+
+# scrcpy
+USER_PASSWORD="lic.2316"
+alias connect-vivo="adb connect 192.168.3.103 && echo $USER_PASSWORD | sudo -S -b scrcpy -b 2M --max-fps 15 --shortcut-mod=rctrl -s 192.168.3.103:5555  -K --turn-screen-off --power-off-on-close && microsoft-edge-stable --new-window 'http://192.168.3.103:6688/'"
+
+# sleep
+alias sleep="systemctl suspend"

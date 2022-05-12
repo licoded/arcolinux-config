@@ -32,10 +32,28 @@ feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #run ckb-next -b
 #run discord
 #run telegram-desktop
-run flameshot
+
+#run shutter
+process=shutter
+makerun="shutter --min_at_startup"
+while true
+do
+  if ps ax | grep -v grep | grep $process
+  then
+    break
+  else
+    nohup $makerun &
+  fi
+  sleep 5
+done
+
 run qv2ray
 run fcitx-autostart
+# run syncthing
 
 # primary display
 xrandr --output DP-1 --auto --output eDP-1 --off
 # xrandr | awk -F ' ' '$2 == "connected" {print $1}' | head -1 | xargs -i xrandr --output {} --primary
+
+# AN2Linux
+systemctl --user restart an2linux.service
