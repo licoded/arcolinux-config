@@ -6,6 +6,23 @@ function run {
     $@&
   fi
 }
+
+function checkAndRun {
+    makerun = $1
+    echo $1 | read name, rest
+    process = $2 || name
+    while true
+    do
+      if ps ax | grep -v grep | grep $process
+      then
+        break
+      else
+        nohup $makerun &
+      fi
+      sleep 5
+    done
+}
+
 run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
 #run xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
 #run xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
@@ -38,13 +55,13 @@ process=shutter
 makerun="shutter --min_at_startup"
 while true
 do
-  if ps ax | grep -v grep | grep $process
-  then
-    break
-  else
-    nohup $makerun &
-  fi
-  sleep 5
+    if ps ax | grep -v grep | grep $process
+    then
+        break
+    else
+        nohup $makerun &
+    fi
+    sleep 5
 done
 
 run qv2ray
@@ -56,4 +73,4 @@ xrandr --output DP-1 --auto --output eDP-1 --off
 # xrandr | awk -F ' ' '$2 == "connected" {print $1}' | head -1 | xargs -i xrandr --output {} --primary
 
 # AN2Linux
-systemctl --user restart an2linux.service
+# systemctl --user restart an2linux.service
