@@ -1,5 +1,5 @@
 *
-!awesome
+!*/
+!awesome/**
+!nvim/**
 !zshrc
-!nvim
-!.gitignore
