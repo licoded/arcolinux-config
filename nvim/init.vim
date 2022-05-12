@@ -1,5 +1,8 @@
 call plug#begin()
 
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+
 " latex
 " 编译(需要手动 :w 保存)
 Plug 'lervag/vimtex'
@@ -15,3 +18,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'lilydjwg/fcitx.vim'
 
 call plug#end()
+
+" \l 保存当前文件并 source 当前配置
+nnoremap <leader>l :w<CR>:source %<CR>

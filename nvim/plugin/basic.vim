@@ -1,5 +1,9 @@
 " 显示行号
 set nu
+" 设置相对行号
+" 行号数字一直会动，容易分散注意力
+" set norelativenumber
+
 " 系统寄存器和无名寄存器打通
 " set clipboard=unnamed
 " 当前行底线
