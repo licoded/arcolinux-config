@@ -1,7 +1,11 @@
 call plug#begin()
 
+" AirLine
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
+
+" File Manager
+Plug 'preservim/nerdtree'
 
 " latex
 " 编译(需要手动 :w 保存)
