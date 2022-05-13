@@ -11,6 +11,8 @@
 
 --]]
 
+-- require('awful').titlebar(client.focus)
+
 -- {{{ Required libraries
 local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
@@ -44,6 +46,46 @@ local dpi           = require("beautiful.xresources").apply_dpi
 -- }}}
 
 
+-- ============================================================
+-- ============================================================
+function test_naughty()
+    naughty.notify({
+        preset = naughty.config.presets.critical,
+        title = "Naughty",
+        text = "This is a test notification"
+    })
+end
+
+function checkInclude(arr, element)
+    for _, value in pairs(arr) do
+        if value == element then
+            return true
+        end
+    end
+    return false
+end
+
+function getCurrentScreenClients()
+    local current_tag = awful.tag.selected()
+    local clients = {}
+    for _, c in pairs(client.get()) do
+        inCurrentTag = checkInclude(c:tags(), current_tag)
+        if inCurrentTag then
+            table.insert(clients, c)
+        end
+    end
+    return clients
+end
+
+function swapWithMinimal(terminalIndex)
+    local current_client = client.focus
+    local client = getCurrentScreenClients()[terminalIndex+1]
+    client.minimized = false
+    awful.client.focus.history.add(client)
+    current_client.minimized = true
+end
+-- ============================================================
+-- ============================================================
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -69,6 +111,9 @@ do
 end
 -- }}}
 
+-- Autostart applications
+awful.spawn.with_shell("~/.config/awesome/autostart.sh")
+awful.spawn.with_shell("picom -b --config  $HOME/.config/awesome/picom.conf")
 
 
 -- {{{ Autostart windowless processes
@@ -117,7 +162,7 @@ local modkey1      = "Control"
 -- personal variables
 --change these variables if you want
 local browser1          = "vivaldi-stable"
-local browser2          = "microsoft-edge-stable"
+local browser2          = "microsoft-edge-stable --high-dpi-support=1 --force-device-scale-factor=1.5"
 local browser3          = "chromium -no-default-browser-check"
 local editor            = os.getenv("EDITOR") or "nvim"
 local editorgui         = "code"
@@ -126,6 +171,16 @@ local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local terminal          = "alacritty"
 local virtualmachine    = "virtualbox"
+
+-- if not awesome.startup then awful.client.setslave(c) end
+client.connect_signal(
+    "manage",
+    function(c)
+        if not awesome.startup then
+            awful.client.setslave(c)
+        end
+    end
+)
 
 -- awesome variables
 awful.util.terminal = terminal
@@ -138,15 +193,15 @@ awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑",
 awful.layout.suit.tile.left.mirror = true
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
-    awful.layout.suit.tile.left,
+    -- awful.layout.suit.floating,
+    -- awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
+    -- awful.layout.suit.max,
     --awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     --awful.layout.suit.corner.nw,
@@ -395,10 +450,10 @@ globalkeys = my_table.join(
         {description = browser3, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "i", function() awful.util.spawn("nitrogen") end,
         {description = nitrogen, group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "k", function() awful.util.spawn( "arcolinux-logout" ) end,
-        {description = scrlocker, group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "l", function() awful.util.spawn( "arcolinux-logout" ) end,
-        {description = scrlocker, group = "alt+ctrl"}),
+    -- awful.key({ modkey1, altkey   }, "k", function() awful.util.spawn( "arcolinux-logout" ) end,
+    --     {description = scrlocker, group = "alt+ctrl"}),
+    -- awful.key({ modkey1, altkey   }, "l", function() awful.util.spawn( "arcolinux-logout" ) end,
+    --     {description = scrlocker, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "o", function() awful.spawn.with_shell("$HOME/.config/awesome/scripts/picom-toggle.sh") end,
         {description = "Picom toggle", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "s", function() awful.util.spawn( mediaplayer ) end,
@@ -492,18 +547,18 @@ globalkeys = my_table.join(
              -- {description = "view  next nonempty", group = "tag"}),
 
     -- Default client focus
-    awful.key({ altkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ altkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
+    -- awful.key({ altkey,           }, "j",
+    --     function ()
+    --         awful.client.focus.byidx( 1)
+    --     end,
+    --     {description = "focus next by index", group = "client"}
+    -- ),
+    -- awful.key({ altkey,           }, "k",
+    --     function ()
+    --         awful.client.focus.byidx(-1)
+    --     end,
+    --     {description = "focus previous by index", group = "client"}
+    -- ),
 
     -- By direction client focus
     awful.key({ modkey }, "j",
@@ -560,6 +615,7 @@ globalkeys = my_table.join(
 
 
     -- Layout manipulation
+    -- 交换窗口
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
@@ -603,10 +659,10 @@ globalkeys = my_table.join(
 
 
     -- On the fly useless gaps change
-    awful.key({ altkey, "Control" }, "j", function () lain.util.useless_gaps_resize(1) end,
-              {description = "increment useless gaps", group = "tag"}),
-    awful.key({ altkey, "Control" }, "h", function () lain.util.useless_gaps_resize(-1) end,
-              {description = "decrement useless gaps", group = "tag"}),
+    -- awful.key({ altkey, "Control" }, "j", function () lain.util.useless_gaps_resize(1) end,
+    --          {description = "increment useless gaps", group = "tag"}),
+    -- awful.key({ altkey, "Control" }, "h", function () lain.util.useless_gaps_resize(-1) end,
+    --          {description = "decrement useless gaps", group = "tag"}),
 
     -- Dynamic tagging
     awful.key({ modkey, "Shift" }, "n", function () lain.util.add_tag() end,
@@ -628,22 +684,24 @@ globalkeys = my_table.join(
     -- awful.key({ modkey, "Shift"   }, "x", awesome.quit,
     --          {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    -- awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ modkey,   }, "=",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    -- awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ modkey,   }, "-",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+    --           {description = "increase the number of master clients", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+    --           {description = "decrease the number of master clients", group = "layout"}),
+    -- awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+    --           {description = "increase the number of columns", group = "layout"}),
+    -- awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+    --           {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    --awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-             -- {description = "select previous", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+             {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -672,32 +730,32 @@ globalkeys = my_table.join(
 
     -- ALSA volume control
     --awful.key({ modkey1 }, "Up",
-    awful.key({ }, "XF86AudioRaiseVolume",
-        function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
-    --awful.key({ modkey1 }, "Down",
-    awful.key({ }, "XF86AudioLowerVolume",
-        function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
-    awful.key({ }, "XF86AudioMute",
-        function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
-    awful.key({ modkey1, "Shift" }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
-    awful.key({ modkey1, "Shift" }, "0",
-        function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
+    -- awful.key({ }, "XF86AudioRaiseVolume",
+    --     function ()
+    --         os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+    --         beautiful.volume.update()
+    --     end),
+    -- --awful.key({ modkey1 }, "Down",
+    -- awful.key({ }, "XF86AudioLowerVolume",
+    --     function ()
+    --         os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+    --         beautiful.volume.update()
+    --     end),
+    -- awful.key({ }, "XF86AudioMute",
+    --     function ()
+    --         os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+    --         beautiful.volume.update()
+    --     end),
+    -- awful.key({ modkey1, "Shift" }, "m",
+    --     function ()
+    --         os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
+    --         beautiful.volume.update()
+    --     end),
+    -- awful.key({ modkey1, "Shift" }, "0",
+    --     function ()
+    --         os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
+    --         beautiful.volume.update()
+    --     end),
 
     --Media keys supported by vlc, spotify, audacious, xmm2, ...
     --awful.key({}, "XF86AudioPlay", function() awful.util.spawn("playerctl play-pause", false) end),
@@ -706,52 +764,52 @@ globalkeys = my_table.join(
     --awful.key({}, "XF86AudioStop", function() awful.util.spawn("playerctl stop", false) end),
 
 --Media keys supported by mpd.
-    awful.key({}, "XF86AudioPlay", function () awful.util.spawn("mpc toggle") end),
-    awful.key({}, "XF86AudioNext", function () awful.util.spawn("mpc next") end),
-    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("mpc prev") end),
-    awful.key({}, "XF86AudioStop", function () awful.util.spawn("mpc stop") end),
-
-    -- MPD control
-    awful.key({ modkey1, "Shift" }, "Up",
-        function ()
-            os.execute("mpc toggle")
-            beautiful.mpd.update()
-        end,
-        {description = "mpc toggle", group = "widgets"}),
-    awful.key({ modkey1, "Shift" }, "Down",
-        function ()
-            os.execute("mpc stop")
-            beautiful.mpd.update()
-        end,
-        {description = "mpc stop", group = "widgets"}),
-    awful.key({ modkey1, "Shift" }, "Left",
-        function ()
-            os.execute("mpc prev")
-            beautiful.mpd.update()
-        end,
-        {description = "mpc prev", group = "widgets"}),
-    awful.key({ modkey1, "Shift" }, "Right",
-        function ()
-            os.execute("mpc next")
-            beautiful.mpd.update()
-        end,
-        {description = "mpc next", group = "widgets"}),
-    awful.key({ modkey1, "Shift" }, "s",
-
-
-
-        function ()
-            local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
-            if beautiful.mpd.timer.started then
-                beautiful.mpd.timer:stop()
-                common.text = common.text .. lain.util.markup.bold("OFF")
-            else
-                beautiful.mpd.timer:start()
-                common.text = common.text .. lain.util.markup.bold("ON")
-            end
-            naughty.notify(common)
-        end,
-        {description = "mpc on/off", group = "widgets"}),
+    -- awful.key({}, "XF86AudioPlay", function () awful.util.spawn("mpc toggle") end),
+    -- awful.key({}, "XF86AudioNext", function () awful.util.spawn("mpc next") end),
+    -- awful.key({}, "XF86AudioPrev", function () awful.util.spawn("mpc prev") end),
+    -- awful.key({}, "XF86AudioStop", function () awful.util.spawn("mpc stop") end),
+    -- 
+    -- -- MPD control
+    -- awful.key({ modkey1, "Shift" }, "Up",
+    --     function ()
+    --         os.execute("mpc toggle")
+    --         beautiful.mpd.update()
+    --     end,
+    --     {description = "mpc toggle", group = "widgets"}),
+    -- awful.key({ modkey1, "Shift" }, "Down",
+    --     function ()
+    --         os.execute("mpc stop")
+    --         beautiful.mpd.update()
+    --     end,
+    --     {description = "mpc stop", group = "widgets"}),
+    -- awful.key({ modkey1, "Shift" }, "Left",
+    --     function ()
+    --         os.execute("mpc prev")
+    --         beautiful.mpd.update()
+    --     end,
+    --     {description = "mpc prev", group = "widgets"}),
+    -- awful.key({ modkey1, "Shift" }, "Right",
+    --     function ()
+    --         os.execute("mpc next")
+    --         beautiful.mpd.update()
+    --     end,
+    --     {description = "mpc next", group = "widgets"}),
+    -- awful.key({ modkey1, "Shift" }, "s",
+    -- 
+    -- 
+    -- 
+    --     function ()
+    --         local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
+    --         if beautiful.mpd.timer.started then
+    --             beautiful.mpd.timer:stop()
+    --             common.text = common.text .. lain.util.markup.bold("OFF")
+    --         else
+    --             beautiful.mpd.timer:start()
+    --             common.text = common.text .. lain.util.markup.bold("ON")
+    --         end
+    --         naughty.notify(common)
+    --     end,
+    --     {description = "mpc on/off", group = "widgets"}),
 
     -- Copy primary to clipboard (terminals to gtk)
     --awful.key({ modkey }, "c", function () awful.spawn.with_shell("xsel | xsel -i -b") end,
@@ -864,6 +922,7 @@ for i = 1, 9 do
                      end
                   end,
                   descr_move),
+        -- 同步两个窗口，很牛逼！
         -- Toggle tag on focused client.
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
@@ -1146,6 +1205,3 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- }}}
 
--- Autostart applications
-awful.spawn.with_shell("~/.config/awesome/autostart.sh")
-awful.spawn.with_shell("picom -b --config  $HOME/.config/awesome/picom.conf")
