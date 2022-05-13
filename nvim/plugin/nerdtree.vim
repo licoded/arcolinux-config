@@ -1,5 +1,5 @@
 " Ctrl+B 打开/关闭 nerdtree
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>b :NERDTreeToggle<CR>
 " nnoremap <silent> <C-b> :NERDTreeToggle<Enter> " 效果同上
 
 " 用法介绍

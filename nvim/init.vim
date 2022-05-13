@@ -1,5 +1,8 @@
 call plug#begin()
 
+" ColorTheme
+Plug 'altercation/vim-colors-solarized'
+
 " AirLine
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
@@ -7,11 +10,19 @@ Plug 'tpope/vim-fugitive'
 " File Manager
 Plug 'preservim/nerdtree'
 
+" Comment
+Plug 'scrooloose/nerdcommenter'
+
+" Snippets
+Plug 'honza/vim-snippets'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
 " latex
 " 编译(需要手动 :w 保存)
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 " 折叠
-Plug 'matze/vim-tex-fold'
+Plug 'matze/vim-tex-fold', { 'for': 'tex' }
 
 " markdown
 " 实时预览(不需要手动 :w 保存)
@@ -24,14 +35,24 @@ Plug 'lilydjwg/fcitx.vim'
 " CtrlP 搜索
 Plug 'kien/ctrlp.vim'
 
+" move
+Plug 'matze/vim-move'
+
 " Emmet: HTML标签，CSS选择器自动补全
 Plug 'mattn/emmet-vim'
+
+" 自动补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.
 " The plugin provides mappings to easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-surround'
 " The . command will work with ds, cs, and yss if you install repeat.vim.
-Plug 'tpopc/vim-repeat' 
+Plug 'tpope/vim-repeat' 
+
+Plug 'github/copilot.vim'
+
+Plug 'Pocco81/AutoSave.nvim'
 
 call plug#end()
 

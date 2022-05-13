@@ -24,3 +24,18 @@ set expandtab
 set showtabline=2
 set splitbelow " 水平分割的新窗口在下面
 set splitright " 垂直分割的新窗口在右边
+
+" function WrapWithoutComment()
+"     let l:leader = get(g:,"mapleader","\\")
+"     execute "normal o<++>"
+"     execute "normal ".l:leader."cu"
+"     execute "normal k$"
+"     execute "normal! /<++>\<CR>"
+"     execute "set nohlsearch"
+"     execute "normal d4l"
+"     execute "normal l"
+" endfunction
+" 
+" inoremap <silent> <cr> <Esc>:call WrapWithoutComment()<CR>i
+
+inoremap <silent> <C-s> <Esc>:w<cr>li
