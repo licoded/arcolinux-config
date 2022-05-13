@@ -18,8 +18,8 @@ local theme                                     = {}
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
 --theme.wallpaper                                 = theme.confdir .. "/wallpaper.jpg"
 --theme.wallpaper                                 = "/usr/share/backgrounds/arcolinux/arco-wallpaper.jpg"
-theme.font                                      = "Noto Sans Regular 22"
-theme.taglist_font                              = "Noto Sans Regular 26"
+theme.font                                      = "Noto Sans Regular 10"
+theme.taglist_font                              = "Noto Sans Regular 16"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
 theme.bg_normal                                 = "#000000"
@@ -108,7 +108,7 @@ mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Noto Sans Mono Medium 16",
+        font = "Noto Sans Mono Medium 10",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -296,7 +296,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(40), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -307,7 +307,7 @@ function theme.at_screen_connect(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        --s.mytasklist, -- Middle widget
+        -- s.mytasklist, -- Middle widget
         nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
@@ -339,7 +339,7 @@ function theme.at_screen_connect(s)
     }
 
     -- Create the bottom wibox
-    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(40), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the bottom wibox
     s.mybottomwibox:setup {
