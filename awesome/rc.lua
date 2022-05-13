@@ -402,8 +402,6 @@ globalkeys = my_table.join(
         {description = "rofi" , group = "function keys" }),
 
     -- super + ...
-    awful.key({ modkey }, "c", function () awful.util.spawn( "conky-toggle" ) end,
-        {description = "conky-toggle", group = "super"}),
     awful.key({ modkey }, "e", function () awful.util.spawn( editorgui ) end,
         {description = "run gui editor", group = "super"}),
     --awful.key({ modkey }, "h", function () awful.util.spawn( "urxvt -T 'htop task manager' -e htop" ) end,
@@ -434,10 +432,6 @@ globalkeys = my_table.join(
         {description = "ArcoLinux Welcome App", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "e", function() awful.util.spawn( "arcolinux-tweak-tool" ) end,
         {description = "ArcoLinux Tweak Tool", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "Next", function() awful.util.spawn( "conky-rotate -n" ) end,
-        {description = "Next conky rotation", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "Prior", function() awful.util.spawn( "conky-rotate -p" ) end,
-        {description = "Previous conky rotation", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "a", function() awful.util.spawn( "xfce4-appfinder" ) end,
         {description = "Xfce appfinder", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "b", function() awful.util.spawn( filemanager ) end,
