@@ -48,6 +48,7 @@ local dpi           = require("beautiful.xresources").apply_dpi
 
 -- ============================================================
 -- ============================================================
+
 function test_naughty()
     naughty.notify({
         preset = naughty.config.presets.critical,
@@ -68,9 +69,12 @@ end
 function getCurrentScreenClients()
     local current_tag = awful.tag.selected()
     local clients = {}
+    local firstFlag = true
     for _, c in pairs(client.get()) do
         inCurrentTag = checkInclude(c:tags(), current_tag)
-        if inCurrentTag then
+        if firstFlag then
+            firstFlag = false
+        elseif inCurrentTag then
             table.insert(clients, c)
         end
     end
@@ -78,12 +82,18 @@ function getCurrentScreenClients()
 end
 
 function swapWithMinimal(terminalIndex)
-    local current_client = client.focus
-    local client = getCurrentScreenClients()[terminalIndex+1]
-    client.minimized = false
-    awful.client.focus.history.add(client)
-    current_client.minimized = true
+    local clients = getCurrentScreenClients()
+    local terminal = clients[terminalIndex]
+    if not terminal:isvisible() then
+        for _,c in pairs(clients) do
+            c.minimized = true
+        end
+        terminal.minimized = false
+        awful.client.focus.history.add(terminal)
+    end
 end
+
+
 -- ============================================================
 -- ============================================================
 
@@ -169,7 +179,7 @@ local editorgui         = "code"
 local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "alacritty"
+local terminal          = "hyper"
 local virtualmachine    = "virtualbox"
 
 -- if not awesome.startup then awful.client.setslave(c) end
@@ -897,11 +907,12 @@ for i = 1, 9 do
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
+                      swapWithMinimal(i)
+        --               local screen = awful.screen.focused()
+        --               local tag = screen.tags[i]
+        --               if tag then
+        --                  awful.tag.viewtoggle(tag)
+                      -- end
                   end,
                   descr_toggle),
         -- Move client to tag.

@@ -8,8 +8,6 @@ function CopyLine(script)
     call cursor(line('.'), l:old_col)
 endfunction
 
-inoremap j ddp
-inoremap <M-j> ddp
 nnoremap <A-S-j> :call CopyLine('yyp')<CR>h 
 inoremap <A-S-j> <Esc>:call CopyLine('yyp')<CR>li
 nnoremap <A-S-k> :call CopyLine('yyP')<CR>h 

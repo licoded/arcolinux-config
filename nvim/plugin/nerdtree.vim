@@ -12,6 +12,7 @@ nnoremap <silent> <leader>b :NERDTreeToggle<CR>
 let NERDTreeMinimalUI = 1
 " 右侧打开
 let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinSize = 45
 
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1

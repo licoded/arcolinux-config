@@ -7,7 +7,7 @@ set nu
 " 系统寄存器和无名寄存器打通
 " set clipboard=unnamed
 " 当前行底线
-set cursorline
+" set cursorline
 
 set undofile
 set history=1000
