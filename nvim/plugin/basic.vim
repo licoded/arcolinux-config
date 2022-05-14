@@ -1,5 +1,5 @@
 " 显示行号
-set nu
+" set nu
 " 设置相对行号
 " 行号数字一直会动，容易分散注意力
 " set norelativenumber
@@ -9,21 +9,21 @@ set nu
 " 当前行底线
 " set cursorline
 
-set undofile
-set history=1000
+" set undofile
+" set history=1000
 
 " 缩进设置
 " show existing tab with 4 spaces width
-set tabstop=4
+" set tabstop=4
 " when indenting with '>', use 4 spaces width
-set shiftwidth=4
+" set shiftwidth=4
 " On pressing tab, insert 4 spaces
-set expandtab
+" set expandtab
 
 " Tab 标签页
-set showtabline=2
-set splitbelow " 水平分割的新窗口在下面
-set splitright " 垂直分割的新窗口在右边
+" set showtabline=2
+" set splitbelow " 水平分割的新窗口在下面
+" set splitright " 垂直分割的新窗口在右边
 
 " function WrapWithoutComment()
 "     let l:leader = get(g:,"mapleader","\\")
@@ -38,4 +38,4 @@ set splitright " 垂直分割的新窗口在右边
 " 
 " inoremap <silent> <cr> <Esc>:call WrapWithoutComment()<CR>i
 
-inoremap <silent> <C-s> <Esc>:w<cr>li
+" inoremap <silent> <C-s> <Esc>:w<cr>li

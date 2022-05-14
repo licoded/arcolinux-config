@@ -1,0 +1,12 @@
+[Unit]
+Description=clash daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/home/lic/.config/clash/start-clash.sh
+ExecStop=/home/lic/.config/clash/stop-clash.sh
+
+[Install]
+WantedBy=multi-user.target
