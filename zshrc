@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 ####   ARCOLINUX SETTINGS   ####
 export PAGER='most'
-export PAGER='nvim -'
+export PAGER='nvim -RM +AnsiEsc'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

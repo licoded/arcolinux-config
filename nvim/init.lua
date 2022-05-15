@@ -7,6 +7,7 @@ require('packer').startup(function()
 
   use 'Mofiqul/vscode.nvim'         -- Color Theme
   use 'preservim/nerdtree'          -- File Manager
+  use 'powerman/vim-plugin-AnsiEsc'
 
   use 'fedepujol/move.nvim'         -- Quick move (map to Alt now)
   use 'terrortylor/nvim-comment'    -- Comment
@@ -23,6 +24,10 @@ require('packer').startup(function()
   -- =======  latex  ==========
   use 'lervag/vimtex'               -- 编译(需要手动 :w 保存)
   use 'matze/vim-tex-fold'          -- 折叠
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
   -- =======  latex  ==========
 
 

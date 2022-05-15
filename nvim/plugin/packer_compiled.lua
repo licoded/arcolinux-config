@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/fcitx.vim",
     url = "https://github.com/lilydjwg/fcitx.vim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["move.nvim"] = {
     loaded = true,
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/move.nvim",
@@ -108,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
+  },
+  ["vim-plugin-AnsiEsc"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/vim-plugin-AnsiEsc",
+    url = "https://github.com/powerman/vim-plugin-AnsiEsc"
   },
   ["vim-repeat"] = {
     loaded = true,
