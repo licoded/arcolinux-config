@@ -76,7 +76,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 ####   ARCOLINUX SETTINGS   ####
 export PAGER='most'
+export PAGER='nvim -'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -483,3 +484,8 @@ alias connect-vivo="adb connect 192.168.3.103 && echo $USER_PASSWORD | sudo -S -
 
 # sleep
 alias sleep="systemctl suspend"
+
+alias vim="nvim"
+
+export editor="nvim"
+export EDITOR_MOST="nvim"

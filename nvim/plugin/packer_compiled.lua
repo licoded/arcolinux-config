@@ -69,22 +69,35 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["autoclose.nvim"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
+    url = "https://github.com/max-0406/autoclose.nvim"
+  },
   ["fcitx.vim"] = {
     loaded = true,
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/fcitx.vim",
     url = "https://github.com/lilydjwg/fcitx.vim"
   },
-  ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21nvim-tree-config\frequire\0" },
+  ["move.nvim"] = {
     loaded = true,
-    path = "/home/lic/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/move.nvim",
+    url = "https://github.com/fedepujol/move.nvim"
   },
-  ["nvim-web-devicons"] = {
-    config = { "\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14get_icons\22nvim-web-devicons\frequire\0" },
+  nerdtree = {
     loaded = true,
-    path = "/home/lic/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/nerdtree",
+    url = "https://github.com/preservim/nerdtree"
+  },
+  ["nvim-blame-line"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/nvim-blame-line",
+    url = "https://github.com/tveskag/nvim-blame-line"
+  },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -96,10 +109,20 @@ _G.packer_plugins = {
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
   },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
   ["vim-snippets"] = {
     loaded = true,
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/vim-snippets",
     url = "https://github.com/honza/vim-snippets"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-tex-fold"] = {
     loaded = true,
@@ -119,14 +142,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21nvim-tree-config\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-web-devicons
-time([[Config for nvim-web-devicons]], true)
-try_loadstring("\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14get_icons\22nvim-web-devicons\frequire\0", "config", "nvim-web-devicons")
-time([[Config for nvim-web-devicons]], false)
 if should_profile then save_profiles() end
 
 end)
