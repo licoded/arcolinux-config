@@ -72,7 +72,8 @@ run warpd
 variety -p  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
 
 # primary display
-xrandr --output DP-1 --auto --output eDP-1 --off
+# xrandr --output DP-1 --auto --output eDP-1 --off
+xrandr --output DP-1 --auto --output eDP-1 --auto
 # xrandr | awk -F ' ' '$2 == "connected" {print $1}' | head -1 | xargs -i xrandr --output {} --primary
 
 # AN2Linux

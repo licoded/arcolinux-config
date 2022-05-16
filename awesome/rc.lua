@@ -172,7 +172,7 @@ local modkey1      = "Control"
 -- personal variables
 --change these variables if you want
 local browser1          = "vivaldi-stable"
-local browser2          = "microsoft-edge-stable --high-dpi-support=1 --force-device-scale-factor=1.5"
+local browser2          = "microsoft-edge-stable" 
 local browser3          = "chromium -no-default-browser-check"
 local editor            = os.getenv("EDITOR") or "nvim"
 local editorgui         = "code"
