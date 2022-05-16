@@ -69,6 +69,8 @@ run utools
 run warpd
 # run syncthing # It's not very useful, replace by scrcpy 直接拖拽
 
+variety -p  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
 # primary display
 xrandr --output DP-1 --auto --output eDP-1 --off
 # xrandr | awk -F ' ' '$2 == "connected" {print $1}' | head -1 | xargs -i xrandr --output {} --primary
