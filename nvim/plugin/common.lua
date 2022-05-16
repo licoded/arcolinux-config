@@ -1,0 +1,6 @@
+-- 序号
+-- vim.keymap.set('i', ',a ', '① ', { silent = true })
+-- vim.keymap.set('i', ',b ', '② ', { silent = true })
+-- vim.keymap.set('i', ',c ', '③ ', { silent = true })
+-- vim.keymap.set('i', ',d ', '④ ', { silent = true })
+-- vim.keymap.set('i', ',e ', '⑤ ', { silent = true })
