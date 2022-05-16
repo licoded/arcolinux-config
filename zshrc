@@ -489,3 +489,17 @@ alias vim="nvim"
 
 export editor="nvim"
 export EDITOR_MOST="nvim"
+
+function zvm_after_lazy_keybindings() {
+  # In normal mode, press Ctrl-E to invoke this widget
+  # zvm_bindkey vicmd '^E' my_custom_widget
+  zvm_bindkey vicmd '<Left>' '<NOP>'
+  zvm_bindkey vicmd '<Right>' '<NOP>'
+  zvm_bindkey vicmd '<Up>' '<NOP>'
+  zvm_bindkey vicmd '<Down>' '<NOP>'
+
+  zvm_bindkey visual '<Left>' '<NOP>'
+  zvm_bindkey visual '<Right>' '<NOP>'
+  zvm_bindkey visual '<Up>' '<NOP>'
+  zvm_bindkey visual '<Down>' '<NOP>'
+}
