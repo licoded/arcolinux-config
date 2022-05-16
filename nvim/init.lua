@@ -6,6 +6,7 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'      -- Packer can manage itself
 
   use 'Mofiqul/vscode.nvim'         -- Color Theme
+  use 'vim-airline/vim-airline'     -- AirLine
   use 'preservim/nerdtree'          -- File Manager
   use 'powerman/vim-plugin-AnsiEsc'
 
