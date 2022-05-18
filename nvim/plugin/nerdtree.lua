@@ -14,37 +14,37 @@ vim.g.NERDTreeWinPos = "right"
 vim.g.NERDTreeWinSize = 45
 
 -- Start NERDTree. If a file is specified, move the cursor to its window.
-vim.api.nvim_create_autocmd('StdinReadPre', {
-  pattern = '*',
-  callback = function()
-    if not vim.s == nil then
-      vim.s.std_in=1
-    end
-  end
-})
-vim.api.nvim_create_autocmd('VimEnter', {
-  pattern = '*',
-  callback = function()
-    vim.cmd [[if argc() > 0 || exists("s:std_in") | NERDTree | wincmd p | endif]]
-  end
-})
+-- vim.api.nvim_create_autocmd('StdinReadPre', {
+--   pattern = '*',
+--   callback = function()
+--     if not vim.s == nil then
+--       vim.s.std_in=1
+--     end
+--   end
+-- })
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--   pattern = '*',
+--   callback = function()
+--     vim.cmd [[if argc() > 0 || exists("s:std_in") | NERDTree | wincmd p | endif]]
+--   end
+-- })
 
 
 -- Can I have the same NERDTree on every tab automatically?
 -- Open the existing NERDTree on each new tab.
-vim.api.nvim_create_autocmd('BufWinEnter', {
-  pattern = '*',
-  callback = function()
-    vim.cmd [[if getcmdwintype() == '' | silent NERDTreeMirror | endif]]
-  end
-})
+-- vim.api.nvim_create_autocmd('BufWinEnter', {
+--   pattern = '*',
+--   callback = function()
+--     vim.cmd [[if getcmdwintype() == '' | silent NERDTreeMirror | endif]]
+--   end
+-- })
 
 
 -- Exit Vim if NERDTree is the only window remaining in the only tab.
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*',
-  callback = function()
-    vim.cmd [[if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
-  end
-})
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--   pattern = '*',
+--   callback = function()
+--     vim.cmd [[if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif]]
+--   end
+-- })
 

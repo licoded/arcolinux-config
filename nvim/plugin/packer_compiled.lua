@@ -69,10 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["autoclose.nvim"] = {
+  ["auto-pairs"] = {
     loaded = true,
-    path = "/home/lic/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
-    url = "https://github.com/max-0406/autoclose.nvim"
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
   },
   ["fcitx.vim"] = {
     loaded = true,
@@ -113,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lic/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
+  },
+  ["vim-airline"] = {
+    loaded = true,
+    path = "/home/lic/.local/share/nvim/site/pack/packer/start/vim-airline",
+    url = "https://github.com/vim-airline/vim-airline"
   },
   ["vim-plugin-AnsiEsc"] = {
     loaded = true,

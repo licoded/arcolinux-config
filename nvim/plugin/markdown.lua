@@ -16,9 +16,14 @@ vim.api.nvim_create_autocmd('FileType', {
     -- vim.keymap.set('i', '--e', '⑤ ', { silent = true })
 
     -- 生词记录
-    vim.keymap.set('i', '--', '<CR>- ', { silent = true })
-    vim.keymap.set('i', '-c', '……', { silent = true })
-    vim.keymap.set('i', '-e', '...', { silent = true })
+    -- vim.keymap.set('i', '--', '<CR>- ', { silent = true })
+    -- vim.keymap.set('i', '-c', '……', { silent = true })
+    -- vim.keymap.set('i', '-e', '...', { silent = true })
+
+    -- _**n.**_
+    vim.keymap.set('i', ',F', '<Esc>?<++><CR>:nohlsearch<CR>c4l', { silent = true })
+    vim.keymap.set('i', ',-', '_<+++>_ <++><Esc>?<+++><CR>:nohlsearch<CR>c5l', { silent = true })
+    vim.keymap.set('i', ',e', '_**<+++>**_ <++><Esc>?<+++><CR>:nohlsearch<CR>c5l', { silent = true })
   end
 })
 

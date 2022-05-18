@@ -1,0 +1,13 @@
+hwmon /sys/devices/virtual/thermal/thermal_zone0/temp
+
+tp_fan /proc/acpi/ibm/fan
+ 
+{ "level auto"
+        (0)
+        (55)
+}
+ 
+{ "level disengaged"
+        (50)
+        (100)
+}

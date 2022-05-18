@@ -12,7 +12,8 @@ require('packer').startup(function()
 
   use 'fedepujol/move.nvim'         -- Quick move (map to Alt now)
   use 'terrortylor/nvim-comment'    -- Comment
-  use 'max-0406/autoclose.nvim'     -- Auto close () []
+  -- use 'max-0406/autoclose.nvim'     -- Auto close () []
+  use 'jiangmiao/auto-pairs'        -- Auto close () [] {}
   use 'tpope/vim-surround'          -- surround
   use 'tpope/vim-repeat'            -- 支持 surround 点操作
 
