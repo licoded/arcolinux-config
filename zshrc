@@ -54,3 +54,4 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source $PIP_BIN/virtualenvwrapper.sh
 
 alias vim="nvim"
+# git config --global core.editor nvim
