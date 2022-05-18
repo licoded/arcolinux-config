@@ -74,11 +74,6 @@ _G.packer_plugins = {
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
-  ["fcitx.vim"] = {
-    loaded = true,
-    path = "/Users/lic/.local/share/nvim/site/pack/packer/start/fcitx.vim",
-    url = "https://github.com/lilydjwg/fcitx.vim"
-  },
   ["markdown-preview.nvim"] = {
     loaded = true,
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
@@ -118,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-airline",
     url = "https://github.com/vim-airline/vim-airline"
+  },
+  ["vim-barbaric"] = {
+    loaded = true,
+    path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-barbaric",
+    url = "https://github.com/rlue/vim-barbaric"
   },
   ["vim-plugin-AnsiEsc"] = {
     loaded = true,

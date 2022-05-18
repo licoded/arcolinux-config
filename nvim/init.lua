@@ -17,6 +17,8 @@ require('packer').startup(function()
   use 'tpope/vim-surround'          -- surround
   use 'tpope/vim-repeat'            -- 支持 surround 点操作
 
+  use 'rlue/vim-barbaric'           -- 进入/退出 Normal 模式时，自动切换输入法
+
   -- Git blame line
   use 'tveskag/nvim-blame-line'
 
