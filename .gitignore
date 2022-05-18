@@ -1,0 +1,9 @@
+*
+!*/
+!.gitignore
+!nvim/**
+!others/**
+!clash/**
+!configstore/**
+!pip/**
+!zshrc
