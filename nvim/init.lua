@@ -16,6 +16,18 @@ require('packer').startup(function()
   use 'jiangmiao/auto-pairs'        -- Auto close () [] {}
   use 'tpope/vim-surround'          -- surround
   use 'tpope/vim-repeat'            -- 支持 surround 点操作
+  use 'mg979/vim-visual-multi'      -- 像其他编辑器一样多个位置同时编辑
+
+  use 'easymotion/vim-easymotion'   -- 快速跳转
+  -- 不知道为什么下面两个插件安装失败
+  -- use {
+  --   'haya14busa/vim-easyoperator-line',
+  --   requires = {'easymotion/vim-easymotion'}
+  -- }
+  -- use {
+  --   'haya14busa/vim-easyoperator-phrase',
+  --   requires = {'easymotion/vim-easymotion'}
+  -- }
 
   use 'rlue/vim-barbaric'           -- 进入/退出 Normal 模式时，自动切换输入法
 

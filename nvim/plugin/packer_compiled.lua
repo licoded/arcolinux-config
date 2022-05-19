@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-barbaric",
     url = "https://github.com/rlue/vim-barbaric"
   },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
+  },
   ["vim-plugin-AnsiEsc"] = {
     loaded = true,
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-plugin-AnsiEsc",
@@ -143,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-tex-fold",
     url = "https://github.com/matze/vim-tex-fold"
+  },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
   },
   vimtex = {
     loaded = true,
