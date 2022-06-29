@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-airline",
     url = "https://github.com/vim-airline/vim-airline"
   },
-  ["vim-barbaric"] = {
-    loaded = true,
-    path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-barbaric",
-    url = "https://github.com/rlue/vim-barbaric"
-  },
   ["vim-easymotion"] = {
     loaded = true,
     path = "/Users/lic/.local/share/nvim/site/pack/packer/start/vim-easymotion",

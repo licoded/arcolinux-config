@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.g.tex_flavor = 'latex'
     vim.g.vimtex_quickfix_mode = 0
-    vim.g.vimtex_view_general_viewer = 'zathura'
+    vim.g.vimtex_view_general_viewer = '/usr/local/Cellar/zathura/HEAD-72f3ce1/bin/zathura'
     vim.g.vimtex_view_method = 'zathura'
      
     -- 这一项目默认即为 nvr，但是如果由于种种原因无法实现 SyncTeX 同步位置，可以考虑手动指定这一项目

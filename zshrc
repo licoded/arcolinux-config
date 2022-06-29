@@ -55,3 +55,9 @@ source $PIP_BIN/virtualenvwrapper.sh
 
 alias vim="nvim"
 # git config --global core.editor nvim
+alias zathura="/usr/local/Cellar/zathura/HEAD-72f3ce1/bin/zathura"
+
+# ssh auto enter password
+alias tl="/usr/local/bin/sshlogin_tencent"
+
+# scp ~/Downloads/2022-05-28\ 162749.jpg root@licoded.site:/root/nodejs/computer-network-notes/content/docs/notes/01-test

@@ -29,7 +29,7 @@ require('packer').startup(function()
   --   requires = {'easymotion/vim-easymotion'}
   -- }
 
-  use 'rlue/vim-barbaric'           -- 进入/退出 Normal 模式时，自动切换输入法
+  -- use 'rlue/vim-barbaric'           -- 进入/退出 Normal 模式时，自动切换输入法
 
   -- Git blame line
   use 'tveskag/nvim-blame-line'
