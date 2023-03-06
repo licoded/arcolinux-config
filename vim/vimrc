@@ -1,0 +1,116 @@
+" essential vim configuration
+" `vim -u NONE -N` 并不好用，因为它把插件(包括内置插件)也disabled了
+" `-u NONE` 不加载.vimrc, plugins also disabled
+" `-N` nocompatible
+set nocompatible
+filetype plugin on 
+
+set tabstop=2
+" set number
+set relativenumber
+set wrap
+
+" enable soft wrapping at the edge of the screen
+set linebreak
+" make it not wrap in the middle of a "word"
+
+" u~up, d~down
+" PageDown/PageUp with zz, which will vertically center current line
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+
+" paste but not lost current vim clipboard
+xnoremap <leader>p "_dP
+
+" copy to system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+
+call plug#begin()
+" don't support vim, only nvim
+" Plug 'ThePrimeagen/vim-be-good'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+" AirLine
+Plug 'vim-airline/vim-airline'
+
+" File Manager
+Plug 'preservim/nerdtree'
+" quick comment
+Plug 'preservim/nerdcommenter'
+" Plug 'tpope/vim-commentary'
+
+" navigate between vim and tmux smoothly, you can use the same command to
+" navigate between window
+Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
+
+" 23.0303
+" Practical.Vim.2nd -- Page-106
+" From Tim Pope's unimpaired.vim plugin
+" switch between buffers
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
+" 23.0303
+" Practical.Vim.2nd -- Page-133
+" disable in vim
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
+" \l 保存当前文件并 source 当前配置
+nnoremap <silent> <leader>l :w<CR>:source %<CR>
+
+" \+B 打开/关闭 nerdtree
+nnoremap <silent> <leader>b :NERDTreeToggle<CR>
+" nnoremap <silent> <C-b> :NERDTreeToggle<Enter> " Ctrl+B 打开/关闭 nerdtree
+
+" disable the default map, may by disabling the function?
+" let g:NERDTreeMapJumpNextSibling='<leader>j'
+" let g:NERDTreeMapJumpPrevSibling='<leader>k'
+let g:NERDTreeMapJumpNextSibling='gj'
+let g:NERDTreeMapJumpPrevSibling='gk'
+
+" 23.0306
+" https://www.youtube.com/watch?v=FcQjTXLrVUU
+" 【Only this works】https://nickjanetakis.com/blog/change-your-vim-cursor-from-a-block-to-line-in-normal-and-insert-mode
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" 【insert mode】jj --- <Esc>
+inoremap jj <Esc>
+" inoremap <Esc> <NOP>
+" inoremap <silent> <Esc> <Esc>:AirlineRefresh<CR>a
+" inoremap <silent> <Esc> <C-o>:AirlineRefresh!<CR>
+" inoremap <silent> <Esc> <C-o>let g:airline_mode='insert'<CR>
+inoremap <silent> <Esc> <C-o>:silent! let g:airline_mode='insert'<CR>
+
+" When the Esc key is disabled in Vim, it may cause some issues with plugins like vim-airline, which use the v:insertmode variable to determine whether or not Vim is in insert mode.
+" However, when the Esc key is disabled, Vim does not completely exit insert mode but instead moves the cursor to a position in normal mode. 
+" This means that the value of v:insertmode may be incorrect, causing vim-airline to display the wrong mode.
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_extensions = []
