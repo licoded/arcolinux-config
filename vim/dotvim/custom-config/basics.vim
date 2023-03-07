@@ -58,7 +58,9 @@ let &t_EI = "\e[2 q"
 set nocompatible
 filetype plugin on 
 
-set tabstop=2
+set expandtab
+set tabstop=4
+set shiftwidth=4
 
 set relativenumber
 set number " 加上这个, 才会显示当前行的绝对行号
