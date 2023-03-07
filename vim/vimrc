@@ -3,8 +3,11 @@ runtime custom-config/basics.vim
 call plug#begin()
 " don't support vim, only nvim
 " Plug 'ThePrimeagen/vim-be-good'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+
+" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-repeat'
+
+Plug 'machakann/vim-sandwich'
 
 " AirLine
 Plug 'vim-airline/vim-airline'
