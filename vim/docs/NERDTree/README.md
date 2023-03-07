@@ -1,1 +1,30 @@
 > https://github.com/preservim/nerdtree
+
+- `?`
+    - toggle HELP page
+- `o`
+    - toggle a directory
+    - open the file
+- some open commands
+    - basic
+        - o: open in prev window
+        - go: preview
+            - without cursor move
+        - t: open in new tab
+        - T: open in new tab silently
+    - open in split window
+        - i: open split
+        - gi: preview split
+        - s: open vsplit
+        - gs: preview vsplit
+- <CR>: custom open
+    - equivalent to `o`
+- O: recursively open node
+- x: close parent of node
+- X: close all child nodes of current node recursively
+- `e`
+    - open current directory in a new window
+- `R`
+	- refresh current directory
+- `gj/k`
+    - go to next/previous sibling
