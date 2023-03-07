@@ -1,30 +1,4 @@
-" essential vim configuration
-" `vim -u NONE -N` 并不好用，因为它把插件(包括内置插件)也disabled了
-" `-u NONE` 不加载.vimrc, plugins also disabled
-" `-N` nocompatible
-set nocompatible
-filetype plugin on 
-
-set tabstop=2
-set number
-set relativenumber
-set wrap
-
-" enable soft wrapping at the edge of the screen
-set linebreak
-" make it not wrap in the middle of a "word"
-
-" u~up, d~down
-" PageDown/PageUp with zz, which will vertically center current line
-nnoremap <C-u> <C-u>zz
-nnoremap <C-d> <C-d>zz
-
-" paste but not lost current vim clipboard
-xnoremap <leader>p "_dP
-
-" copy to system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
+runtime custom-config/basics.vim
 
 call plug#begin()
 " don't support vim, only nvim
@@ -46,65 +20,9 @@ Plug 'preservim/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
-" 23.0303
-" Practical.Vim.2nd -- Page-106
-" From Tim Pope's unimpaired.vim plugin
-" switch between buffers
-
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-
-" 23.0303
-" Practical.Vim.2nd -- Page-133
-" disable in vim
-
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-
 " \l 保存当前文件并 source 当前配置
+" 方便 `~/.vimrc` 文件的编辑和调试
 nnoremap <silent> <leader>l :w<CR>:source %<CR>
 
-" \+B 打开/关闭 nerdtree
-nnoremap <silent> <leader>b :NERDTreeToggle<CR>
-" nnoremap <silent> <C-b> :NERDTreeToggle<Enter> " Ctrl+B 打开/关闭 nerdtree
-
-" disable the default map, may by disabling the function?
-" let g:NERDTreeMapJumpNextSibling='<leader>j'
-" let g:NERDTreeMapJumpPrevSibling='<leader>k'
-let g:NERDTreeMapJumpNextSibling='gj'
-let g:NERDTreeMapJumpPrevSibling='gk'
-
-" 23.0306
-" https://www.youtube.com/watch?v=FcQjTXLrVUU
-" 【Only this works】https://nickjanetakis.com/blog/change-your-vim-cursor-from-a-block-to-line-in-normal-and-insert-mode
-" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
-" Use a line cursor within insert mode and a block cursor everywhere else.
-"
-" Reference chart of values:
-"   Ps = 0  -> blinking block.
-"   Ps = 1  -> blinking block (default).
-"   Ps = 2  -> steady block.
-"   Ps = 3  -> blinking underline.
-"   Ps = 4  -> steady underline.
-"   Ps = 5  -> blinking bar (xterm).
-"   Ps = 6  -> steady bar (xterm).
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-
-" 【insert mode】jj --- <esc>
-inoremap jj <esc>
-inoremap <esc> <nop>
-
-" Speed up AirLine
-let g:airline_extensions = []
-" close the default status bar
-" which will behave unexpectedly after disable <Esc>
-set noshowmode 
+runtime custom-config/plugins/AirLine.vim
+runtime custom-config/plugins/NERDTree.vim
