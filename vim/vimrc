@@ -6,7 +6,7 @@ set nocompatible
 filetype plugin on 
 
 set tabstop=2
-" set number
+set number
 set relativenumber
 set wrap
 
@@ -33,7 +33,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " AirLine
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 " File Manager
 Plug 'preservim/nerdtree'
@@ -101,16 +101,26 @@ let &t_EI = "\e[2 q"
 
 " 【insert mode】jj --- <Esc>
 inoremap jj <Esc>
+inoremap <Esc> <NOP>
+" inoremap <silent> <Esc> <C-o>:AirlineRefresh!<CR>
 " inoremap <Esc> <NOP>
+" inoremap <Esc> a<C-h>
 " inoremap <silent> <Esc> <Esc>:AirlineRefresh<CR>a
 " inoremap <silent> <Esc> <C-o>:AirlineRefresh!<CR>
 " inoremap <silent> <Esc> <C-o>let g:airline_mode='insert'<CR>
-inoremap <silent> <Esc> <C-o>:silent! let g:airline_mode='insert'<CR>
+" inoremap <silent> <Esc> <C-o>:silent! let g:airline_mode='insert'<CR>
+"inoremap <silent> <Esc> <C-o>:silent! let g:airline_mode='insert'<CR>
 
 " When the Esc key is disabled in Vim, it may cause some issues with plugins like vim-airline, which use the v:insertmode variable to determine whether or not Vim is in insert mode.
 " However, when the Esc key is disabled, Vim does not completely exit insert mode but instead moves the cursor to a position in normal mode. 
 " This means that the value of v:insertmode may be incorrect, causing vim-airline to display the wrong mode.
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_extensions = []
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" set statusline+=%{StatuslineGit()}
+" set stl+=%!airline#check_mode(winnr())
+" let g:airline_section_xxx = '%{!airline#check_mode(winnr())}'
+" let g:airline_theme='xxx'
+
+" Speed up Airline
+" let g:airline_extensions = []
