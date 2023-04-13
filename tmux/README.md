@@ -1,6 +1,7 @@
 # 注意事项
 
 - 不像VIM, 可以一直按着Ctrl键, TMUX必须先松开Ctrl键, 然后才能监听/接收/识别下一个按键
+- 应该是没有关闭快捷键的, `session/pane/window` 应该都没有
 
 # Session/会话
 
@@ -8,6 +9,10 @@
 
 - `<Ctrl+b> d`: 分离当前会话。
 - `<Ctrl+b> s`: 列出所有会话。
+    - 这里进入的叫"choose-tree"
+        - 在 `man tmux` 中搜 choose-tree
+        - 可用的命令
+            - `x` 删除当前 item, 按 y 确认, 不是会车哦!
 - `<Ctrl+b> $`: 重命名当前会话。
 
 # pane/窗格
@@ -66,7 +71,8 @@
 - `<S-j/k>` move page with cursor fixed position in page (not in text)
 - `<C-u/d>`
 - `<C-b/f>`
-- `<Ctrl+c> [`：退出VI-MODE
+- `<Ctrl+c>`：退出VI-MODE
+    - 直接按 `q` 键也可
 
 # references
 

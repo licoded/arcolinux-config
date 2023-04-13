@@ -1,0 +1,3 @@
+- need access to manipulate the system clipboard
+    - when back to normal edit mode, you can just use `<Command-v>` or `p` in zsh-vi-mode to paste, as it just copy to the system clipboard
+- `q` can just exit
