@@ -21,3 +21,10 @@
         - id : `div#id1` to `<div id="id1"></div>`
         - class : `div.class1` to `<div class="class1"></div>`
         - custom attributes : `div[attr=value]` to `<div attr="value"></div>`
+
+## surprise I have found
+
+- `2sa2e**`
+    - can add bold in Markdown file in one command
+    - the first `2` corresponds to the `**` in the last
+        - and the `**` can be replaced by two different characters, e.g. `*u`

@@ -22,6 +22,7 @@ nnoremap <silent> ]B :blast<CR>
 xnoremap <leader>p "_dP
 " copy to system clipboard
 nnoremap <leader>y "+y
+nnoremap <leader>yy "+yy
 vnoremap <leader>y "+y
 
 
@@ -89,5 +90,20 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " 【insert mode】jj --- <esc>
-inoremap jj <esc>
-inoremap <esc> <nop>
+inoremap jj <Esc>
+inoremap <Esc> <NOP>
+" inoremap <Esc> <C-c>
+
+inoremap <Enter> <NOP>
+cnoremap <Enter> <NOP>
+inoremap <BS> <NOP>
+cnoremap <BS> <NOP>
+
+inoremap <C-m> <Enter>
+cnoremap <C-m> <Enter>
+
+" remove Esc latency
+set noesckeys
+set timeoutlen=1000 ttimeoutlen=0
+
+

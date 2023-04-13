@@ -1,4 +1,5 @@
 runtime custom-config/basics.vim
+runtime custom-config/newline.vim
 
 call plug#begin()
 " don't support vim, only nvim
@@ -21,6 +22,17 @@ Plug 'preservim/nerdcommenter'
 " navigate between vim and tmux smoothly, you can use the same command to
 " navigate between window
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'cosminadrianpopescu/vim-sql-workbench'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-dotenv'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
 call plug#end()
 
 " \l 保存当前文件并 source 当前配置
@@ -28,4 +40,7 @@ call plug#end()
 nnoremap <silent> <leader>l :w<CR>:source %<CR>
 
 runtime custom-config/plugins/AirLine.vim
+runtime custom-config/plugins/vim-gitgutter.vim
+runtime custom-config/plugins/vim-sql-workbench.vim
 runtime custom-config/plugins/NERDTree.vim
+runtime custom-config/plugins/NERDCommenter.vim
