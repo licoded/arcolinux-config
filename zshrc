@@ -1,4 +1,4 @@
-source $HOME/configs/antigen/bin/antigen.zsh
+. $HOME/.config/antigen/bin/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -82,57 +82,16 @@ export JAVA_TOOL_OPTIONS=-Duser.language=en
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# #Python
-# PIP_BIN=$HOME/Library/Python/3.8/bin
-# export PATH=$PIP_BIN:$PATH
-# #Python Virtualenvs
-# export WORKON_HOME=$HOME/envs/python/virtualenvs
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-# source $PIP_BIN/virtualenvwrapper.sh
-
 # alias vim="nvim"
 # git config --global core.editor nvim
 
-# ssh auto enter password
-# alias tl="/usr/local/bin/sshlogin_tencent"
-
-# scp ~/Downloads/2022-05-28\ 162749.jpg root@licoded.site:/root/nodejs/computer-network-notes/content/docs/notes/01-test
-
-# pnpm
-export PNPM_HOME="/Users/lic/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
 # code
-alias code="code-insiders"
+# alias code="code-insiders"
 
 # yarn 1.x
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Anaconda_2019.10 (install_time: 2023.01.29)
-# export ANACONDA3_HOME="/Users/lic/envs/anaconda3"
-# export PATH="$ANACONDA3_HOME/bin:$PATH"
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/lic/envs/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/lic/envs/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/lic/envs/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/lic/envs/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 alias cnpm="npm --registry=https://registry.npmmirror.com \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npmmirror.com/mirrors/node \
 --userconfig=$HOME/.cnpmrc"
-
-# trick in npm project
-alias b="cd $(pnpm pwd | tail -1)"
