@@ -23,11 +23,6 @@ Plug 'preservim/nerdcommenter'
 " navigate between window
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'cosminadrianpopescu/vim-sql-workbench'
-Plug 'tpope/vim-dadbod'
-Plug 'tpope/vim-dotenv'
-Plug 'kristijanhusak/vim-dadbod-ui'
-
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -41,6 +36,5 @@ nnoremap <silent> <leader>l :w<CR>:source %<CR>
 
 runtime custom-config/plugins/AirLine.vim
 runtime custom-config/plugins/vim-gitgutter.vim
-runtime custom-config/plugins/vim-sql-workbench.vim
 runtime custom-config/plugins/NERDTree.vim
 runtime custom-config/plugins/NERDCommenter.vim
