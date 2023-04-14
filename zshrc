@@ -82,12 +82,6 @@ export JAVA_TOOL_OPTIONS=-Duser.language=en
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# #alias for cnpm
-# alias cnpm="npm --registry=https://registry.npmmirror.com \
-#   --cache=$HOME/.npm/.cache/cnpm \
-#   --disturl=https://npmmirror.com/mirrors/node \
-#   --userconfig=$HOME/.cnpmrc"
-
 # #Python
 # PIP_BIN=$HOME/Library/Python/3.8/bin
 # export PATH=$PIP_BIN:$PATH
