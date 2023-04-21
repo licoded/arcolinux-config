@@ -1,0 +1,45 @@
+{
+    // don't show menu
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": true,
+    // file auto save
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    // Minmap
+    "editor.minimap.enabled": false,
+    // Font Settings
+    // "editor.fontFamily": "'Cascadia Code', '宋体'",
+    // "editor.fontLigatures": true,
+    // "debug.console.fontFamily": "'Cascadia Code', '宋体'",
+    // "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font Light', '宋体'",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    "editor.lineHeight": 1.8,
+    // VsCode Icon
+    "workbench.iconTheme": "material-icon-theme",
+    "vsicons.presets.jsOfficial": true,
+    "vsicons.presets.tsOfficial": true,
+    // Product Icon
+    // Color Highlight
+    // Error Lens
+    "workbench.colorCustomizations": {
+        "errorLens.errorForeground": "#ff0000", // 对应 BUG 和 FIXME
+        "errorLens.warningForeground": "#fa973a", // 对应 HACK 和 TODO
+        "errorLens.infoForeground": "#00b7e4", // 对应 NOTE
+        "errorLens.hintForeground": "#2faf64" // 对应 HINT
+    },
+    // GitLens
+    "gitlens.defaultDateFormat": "YYYY-MM-DD hh:mm:ss",
+    "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    // Vim
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "/Users/lic/configs/vscode/vscode-vim/vimrc",
+    "openInGitHub.github.domain": "github.com", // Custom GitHub domain
+    "openInGitHub.remote.name": "origin", // Name of the remote repository
+    "openInGitHub.remote.branch": "master", // Name of the remote branch
+    "openInGitHub.useLocalBranch": true, // Use the local branch instead of the fixed remote branch
+    "openInGitHub.useLocalRange": true, // Highlight the local selection range, if there's one
+    "openInGitHub.useLocalLine": false // Highlight the local line if there's no selection range
+}
